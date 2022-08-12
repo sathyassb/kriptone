@@ -19,7 +19,7 @@ public partial class _Default : System.Web.UI.Page
         if (txtUsername.Text == "admin" && txtPassword.Text == "123")
         {
             Authenticated("1", "admmin", arr.ToArray(), true);
-            Response.Redirect("user-report");
+            Response.Redirect("dashboard");
         }
     }
     #region Authenticated

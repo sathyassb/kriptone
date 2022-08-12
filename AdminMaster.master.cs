@@ -10,6 +10,11 @@ public partial class MasterPage : System.Web.UI.MasterPage
     protected void Page_Load(object sender, EventArgs e)
     {
 
+        if(!Page.User.IsInRole("admin"))
+        {
+            Response.Redirect("logout");
+        }
+
         string path = Request.Url.LocalPath;
         string url = Request.Url.ToString();
 

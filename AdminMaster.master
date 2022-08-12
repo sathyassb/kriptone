@@ -94,7 +94,7 @@
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <!-- item-->
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="."><i class="mdi mdi-logout font-size-16 align-middle mr-1"></i>Logout</a>
+                                    <a class="dropdown-item" href="logout"><i class="mdi mdi-logout font-size-16 align-middle mr-1"></i>Logout</a>
                                 </div>
                             </div>
                         </div>
@@ -117,7 +117,7 @@
                                             <div class="dropdown-menu  dropdown-mega-menu-lg" aria-labelledby="topnav-components">
                                                 <div class="row">
                                                     <div class="col-lg-6">
-                                                        <% if (Page.User.IsInRole("news"))
+                                                        <% if (Page.User.IsInRole("admin"))
                                                         { %>
                                                         <a href="news-list" class="dropdown-item">
                                                             <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-file-document-box-outline"></i></div>
@@ -212,86 +212,63 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <% if (Page.User.IsInRole("seo"))
-                                            { %>
+                                       
                                         <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-components" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SEO Tools
+                                            <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-components" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reports
                                                 <div class="arrow-down"></div>
                                             </a>
 
                                             <div class="dropdown-menu  dropdown-mega-menu-lg" aria-labelledby="topnav-components">
                                                 
                                                 <div class="row">
+                                                    
                                                     <div class="col-lg-6">
-                                                        <div class="dropdown-item-text font-weight-semibold font-size-16">
-                                                            <div class="d-inline-block icons-sm mr-1"><i class="mdi mdi-format-list-checks"></i>Sitemaps</div>
-                                                        </div>
-                                                        <a href="seo-institution-sitemap" class="dropdown-item">
-                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-code-array"></i></div>
-                                                            Institution Sitemap
-                                                        </a>
-                                                        <a href="seo-news-sitemap" class="dropdown-item">
-                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-code-array"></i></div>
-                                                            News Sitemap
-                                                        </a>
-                                                        <a href="seo-exam-sitemap" class="dropdown-item">
-                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-code-array"></i></div>
-                                                            Exams Sitemap
-                                                        </a>
-
-                                                        <a href="seo-website-sitemap" class="dropdown-item">
-                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-code-array"></i></div>
-                                                            Static Website Sitemap
-                                                        </a>
-                                                          <a href="seo-course-sitemap" class="dropdown-item">
-                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-code-array"></i></div>
-                                                            Course Sitemap
-                                                        </a>
-                                                        <a href="seo-careerpath-sitemap" class="dropdown-item">
-                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-code-array"></i></div>
-                                                            Career Sitemap
-                                                        </a>
-                                                            <a href="seo-scholarship-sitemap" class="dropdown-item">
-                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-code-array"></i></div>
-                                                            Scholarship Sitemap
-                                                        </a>
-                                                         <a href="seo-keyblog-sitemap" class="dropdown-item">
-                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-code-array"></i></div>
-                                                           Key. Blog Sitemap
-                                                        </a>
-
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                      <div class="dropdown-item-text font-weight-semibold font-size-16">
-                                                            <div class="d-inline-block icons-sm mr-1"><i class="mdi mdi-format-list-checks"></i>Other Tools</div>
-                                                        </div>
-                                                        <a href="seo-health-check" class="dropdown-item">
+                                                        <a href="user-report" class="dropdown-item">
                                                             <div class="d-inline-block icons-sm mr-2"><i class="fa fa-heart"></i></div>
-                                                            Health Check
+                                                            User Session Report
                                                         </a>
-                                                          <a href="seo-duplicate-permalink" class="dropdown-item">
-                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-copy"></i></div>
-                                                            Duplicate Permalink
+                                                          <a href="email-sent-report" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-envelope"></i></div>
+                                                            Email Sent Report
                                                         </a>
                                                           <a href="seo-page-speed" class="dropdown-item">
-                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-fast-forward"></i></div>
-                                                            Page Speed
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-fas"></i></div>
+                                                            Report 3
+
                                                         </a>
                                                         <a href="seo-institution-grouping-list" class="dropdown-item">
                                                             <div class="d-inline-block icons-sm mr-2"><i class="fa fa-user-friends"></i></div>
-                                                             Keyword Blogs
+                                                             Report 4
                                                         </a>
-                                                         <a href="seo-keyword-mapping" class="dropdown-item">
-                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-keyboard"></i></div>
-                                                            Keyword Mapping
+                                                   
+
+
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <a href="seo-health-check" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-heart"></i></div>
+                                                            Report 5
                                                         </a>
+                                                          <a href="seo-duplicate-permalink" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-copy"></i></div>
+                                                            Report 6
+                                                        </a>
+                                                          <a href="seo-page-speed" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-fast-forward"></i></div>
+                                                            Report 7
+                                                        </a>
+                                                        <a href="seo-institution-grouping-list" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-user-friends"></i></div>
+                                                             Report 8
+                                                        </a>
+                                                   
 
 
                                                     </div>
                                                 </div>
                                             </div>
                                         </li>
-                                        <%} %>
+                                      
                                         <%-- <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Utilities <div class="arrow-down"></div>

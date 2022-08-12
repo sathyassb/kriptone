@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>Edunews - Admin Control Panel</title>
+        <title>Kriptone - Admin Control Panel</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Kriptone" name="description" />
         <meta content="Themesdesign" name="author" />

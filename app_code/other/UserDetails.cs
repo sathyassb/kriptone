@@ -28,8 +28,8 @@ public class UserInfo
     {
         url = "UserIdleTime";
     }
-   
-    
+
+
     public List<UserInfo> GetAll()
     {
         tcrestconnect rest = new tcrestconnect();
@@ -39,4 +39,3 @@ public class UserInfo
     }
 
 }
-

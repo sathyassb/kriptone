@@ -16,6 +16,8 @@
     {
 
         routes.MapPageRoute("user-report", "user-report", "~/user-report.aspx");
+        routes.MapPageRoute("email-sent-report", "email-sent-report", "~/email-sent-report.aspx");
+        routes.MapPageRoute("dashbord", "dashboard", "~/dashboard.aspx");
         //Logout
         routes.MapPageRoute("logout", "logout", "~/logout.aspx");
 
