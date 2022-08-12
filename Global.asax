@@ -8,15 +8,17 @@
     void Application_Start(object sender, EventArgs e)
     {
         // Code that runs on application startup
-
         RegisterRoutes(RouteTable.Routes);
 
     }
     public static void RegisterRoutes(RouteCollection routes)
     {
 
-        routes.MapPageRoute("user-report", "user-report", "~/user-report.aspx");
+        routes.MapPageRoute("user-activities-report", "user-activities-report", "~/user-activities-report.aspx");
         routes.MapPageRoute("email-sent-report", "email-sent-report", "~/email-sent-report.aspx");
+        routes.MapPageRoute("print-report", "print-report", "~/print-report.aspx");
+        routes.MapPageRoute("user-idle-time-report", "user-idle-time-report", "~/user-idle-time-report.aspx");
+
         routes.MapPageRoute("dashbord", "dashboard", "~/dashboard.aspx");
         //Logout
         routes.MapPageRoute("logout", "logout", "~/logout.aspx");

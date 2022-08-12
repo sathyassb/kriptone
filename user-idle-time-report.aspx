@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="user-report.aspx.cs" MasterPageFile="~/AdminMaster.master" Inherits="_Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="user-idle-time-report.aspx.cs" MasterPageFile="~/AdminMaster.master" Inherits="_Default" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="contentPlaceholder">
     <!-- DataTables -->
@@ -12,10 +12,10 @@
                 <div class="container-fluid">
                     <div class="row align-items-center">
                         <div class="col-md-8">
-                            <h4 class="page-title mb-1">Kriptone User Report</h4>
+                            <h4 class="page-title mb-1">User Idle Time Report</h4>
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="dashboard">Dashboard</a></li>
-                                <li class="breadcrumb-item active">User Report</li>
+                                <li class="breadcrumb-item active">User Idle Time Report</li>
                             </ol>
                         </div>
                         <div class="col-md-4">

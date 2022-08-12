@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="email-sent-report.aspx.cs" MasterPageFile="~/AdminMaster.master" Inherits="_Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="user-activities-report.aspx.cs" MasterPageFile="~/AdminMaster.master" Inherits="_Default" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="contentPlaceholder">
     <!-- DataTables -->
@@ -12,10 +12,10 @@
                 <div class="container-fluid">
                     <div class="row align-items-center">
                         <div class="col-md-8">
-                            <h4 class="page-title mb-1">Email Sent Report</h4>
+                            <h4 class="page-title mb-1">User Activities Report</h4>
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="dashboard">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Email Sent Report</li>
+                                <li class="breadcrumb-item active">User Activities Report</li>
                             </ol>
                         </div>
                         <div class="col-md-4">
@@ -65,15 +65,9 @@
                                             <tr>
                                                 <th>User Name</th>
                                                 <th>Machine Name</th>
-                                                <th>From</th>
-                                                <th>To</th>
-                                                <th>CC</th>
-                                                <th>BCC</th>
-                                                <th>Subject</th>
-                                                <th>Body</th>
-                                                
+                                                <th>Window Title</th>
+                                                <th>Focused Element Type</th>
                                                 <th>Start Time</th>
-                                                <th>End Time</th>
                                             </tr>
                                         </thead>
 
@@ -82,16 +76,11 @@
                                             <asp:Repeater runat="server" ID="rptUser">
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td><%# ((Email)Container.DataItem).userName %></td>
-                                                        <td><%# ((Email)Container.DataItem).machineName %></td>
-                                                        <td><%# ((Email)Container.DataItem).from %></td>
-                                                        <td><%# ((Email)Container.DataItem).to %></td>
-                                                        <td><%# ((Email)Container.DataItem).cc %></td>
-                                                        <td><%# ((Email)Container.DataItem).bCc %></td>
-                                                        <td><%# ((Email)Container.DataItem).subject %></td>
-                                                        <td><%# ((Email)Container.DataItem).body %></td>
-                                                        <td><%# ((Email)Container.DataItem).startTime.ToString("dd-MM-yyyy hh:mm tt") %></td>
-                                                        <td><%# ((Email)Container.DataItem).endTime.ToString("dd-MM-yyyy hh:mm tt") %></td>
+                                                        <td><%# ((UserActivities)Container.DataItem).userName %></td>
+                                                        <td><%# ((UserActivities)Container.DataItem).machineName %></td>
+                                                        <td><%# ((UserActivities)Container.DataItem).focusChangedWindowTitle %></td>
+                                                        <td><%# ((UserActivities)Container.DataItem).focusedElementType %></td>
+                                                        <td><%# ((UserActivities)Container.DataItem).startTime.ToString("dd-MM-yyyy hh:mm tt") %></td>
                                                         
                                                     </tr>
                                                 </ItemTemplate>
