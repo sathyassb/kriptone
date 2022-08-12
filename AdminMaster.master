@@ -1,0 +1,445 @@
+﻿
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMaster.master.cs" Inherits="MasterPage" %>
+
+<!doctype html>
+<html lang="en">
+
+<head runat="server">
+    <meta charset="utf-8" />
+    <title runat="server">Dashboard | Kriotone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="description" />
+    <meta content="Themesdesign" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.png">
+    <script src="../assets/libs/jquery/jquery.min.js"></script>
+    <script src="../assets/js/jquery-ui.js"></script>
+    <script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- datepicker -->
+    <link href="../assets/libs/air-datepicker/css/datepicker.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- jvectormap -->
+    <link href="../assets/libs/jqvmap/jqvmap.min.css" rel="stylesheet" />
+
+    <link href="../assets/css/custom.css?new=1" rel="stylesheet" />
+
+    <!-- Bootstrap Css -->
+    <link href="../assets/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <!-- DataTables -->
+    <link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <!-- Responsive datatable examples -->
+    <link href="../assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/libs/toast/toast.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .bg-primary {
+            background-color: #2e3859 !important;
+        }
+    </style>
+
+</head>
+<script type="text/javascript">
+    var statusMsg = '<%=tclib.StatusMsg()%>';
+    var statusType = '<%=tclib.StatusType()%>';
+    statusType = statusType.toLowerCase();
+</script>
+<%
+    tclib.Toast(null, null);
+%>
+<body data-topbar="colored" data-layout="horizontal" data-layout-size="boxed">
+    <form runat="server">
+        <!-- Begin page -->
+        <div class="statusMain"></div>
+        <div id="layout-wrapper">
+
+            <header id="page-topbar">
+                <div class="navbar-header">
+                    <div class="container-fluid">
+                        <div class="float-right">
+
+                            <div class="dropdown d-inline-block ml-2">
+                                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0" aria-labelledby="page-header-search-dropdown">
+
+                                    <form class="p-3">
+                                        <div class="form-group m-0">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="dropdown d-inline-block">
+                                <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+                                    <i class="mdi mdi-tune"></i>
+                                </button>
+                            </div>
+
+                            <div class="dropdown d-inline-block">
+                                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="d-none d-sm-inline-block ml-1">Admin</span>
+                                    <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <!-- item-->
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="."><i class="mdi mdi-logout font-size-16 align-middle mr-1"></i>Logout</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- LOGO -->
+
+                        <button type="button" class="btn btn-sm mr-2 font-size-16 d-lg-none header-item waves-effect waves-light" data-toggle="collapse" data-target="#topnav-menu-content">
+                            <i class="fa fa-fw fa-bars"></i>
+                        </button>
+
+                        <div class="topnav">
+                            <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
+
+                                <div class="collapse navbar-collapse" id="topnav-menu-content">
+                                    <ul class="navbar-nav">
+
+                                        
+                                        <li class="nav-item dropdown">
+                                           
+                                            <div class="dropdown-menu  dropdown-mega-menu-lg" aria-labelledby="topnav-components">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <% if (Page.User.IsInRole("news"))
+                                                        { %>
+                                                        <a href="news-list" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-file-document-box-outline"></i></div>
+                                                            News
+                                                        </a>
+                                                        <%} %>
+                                                        <% if (Page.User.IsInRole("ins"))
+                                                            { %>
+                                                        <a href="institution-list" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-bank"></i></div>
+                                                            Institutions
+                                                        </a>
+                                                        <a href="institution-login-accounts" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-bank"></i></div>
+                                                            Institution Accounts
+                                                        </a>
+                                                        <a href="admission-list" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-chart-pie"></i></div>
+                                                            Admission
+                                                        </a>
+                                                           <% if (Page.User.IsInRole("res"))
+                                                               { %>
+                                                        <a href="resources-list" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-variable"></i></div>
+                                                            Resources
+                                                        </a>
+                                                        <%} %>
+                                                        <% if (Page.User.IsInRole("exam"))
+                                                            { %>
+                                                        <a href="exam-list" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-chart-pie"></i></div>
+                                                            Exam
+                                                        </a>
+                                                        <%} %>
+
+                                                        <a href="group-list" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-chart-bar-stacked"></i></div>
+                                                            Institution Group
+                                                        </a>
+                                                        <a href="user-list" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-account-group"></i></div>
+                                                            User Accounts
+                                                        </a>
+                                                        <a href="inst-manage-rating" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-star-half"></i></div>
+                                                            Ratings & Reviews
+                                                        </a>
+                                                        <a href="inst-answer-questions" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-animation"></i></div>
+                                                            Questions & Answers
+                                                        </a>
+                                                        <% } %>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <% if (Page.User.IsInRole("ins"))
+                                                            { %>
+                                                        <a href="careerpath-list" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-file-document-box-outline"></i></div>
+                                                            Career Path
+                                                        </a>
+                                                        <a href="campaigns-list" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-file-document-box-outline"></i></div>
+                                                            Campaigns
+                                                        </a>
+                                                        <a href="lms-settings" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-bank"></i></div>
+                                                            LMS
+                                                        </a>
+                                                        <% if (Page.User.IsInRole("sch"))
+                                                            { %>
+                                                        <a href="scholarship-list" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-crown-outline"></i></div>
+                                                            Scholarships
+                                                        </a>
+                                                        <%} %>
+                                                       
+                                                        <a href="post-list" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-desktop-mac-dashboard"></i></div>
+                                                            Website Contents
+                                                        </a>
+                                                        <a href="transaction-list" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-account"></i></div>
+                                                            Accounting
+                                                        </a>
+                                                        <a href="variables-list" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-variable"></i></div>
+                                                            Variables
+                                                        </a>
+
+                                                        <%} %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <% if (Page.User.IsInRole("seo"))
+                                            { %>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-components" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SEO Tools
+                                                <div class="arrow-down"></div>
+                                            </a>
+
+                                            <div class="dropdown-menu  dropdown-mega-menu-lg" aria-labelledby="topnav-components">
+                                                
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="dropdown-item-text font-weight-semibold font-size-16">
+                                                            <div class="d-inline-block icons-sm mr-1"><i class="mdi mdi-format-list-checks"></i>Sitemaps</div>
+                                                        </div>
+                                                        <a href="seo-institution-sitemap" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-code-array"></i></div>
+                                                            Institution Sitemap
+                                                        </a>
+                                                        <a href="seo-news-sitemap" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-code-array"></i></div>
+                                                            News Sitemap
+                                                        </a>
+                                                        <a href="seo-exam-sitemap" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-code-array"></i></div>
+                                                            Exams Sitemap
+                                                        </a>
+
+                                                        <a href="seo-website-sitemap" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-code-array"></i></div>
+                                                            Static Website Sitemap
+                                                        </a>
+                                                          <a href="seo-course-sitemap" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-code-array"></i></div>
+                                                            Course Sitemap
+                                                        </a>
+                                                        <a href="seo-careerpath-sitemap" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-code-array"></i></div>
+                                                            Career Sitemap
+                                                        </a>
+                                                            <a href="seo-scholarship-sitemap" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-code-array"></i></div>
+                                                            Scholarship Sitemap
+                                                        </a>
+                                                         <a href="seo-keyblog-sitemap" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="mdi mdi-code-array"></i></div>
+                                                           Key. Blog Sitemap
+                                                        </a>
+
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                      <div class="dropdown-item-text font-weight-semibold font-size-16">
+                                                            <div class="d-inline-block icons-sm mr-1"><i class="mdi mdi-format-list-checks"></i>Other Tools</div>
+                                                        </div>
+                                                        <a href="seo-health-check" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-heart"></i></div>
+                                                            Health Check
+                                                        </a>
+                                                          <a href="seo-duplicate-permalink" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-copy"></i></div>
+                                                            Duplicate Permalink
+                                                        </a>
+                                                          <a href="seo-page-speed" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-fast-forward"></i></div>
+                                                            Page Speed
+                                                        </a>
+                                                        <a href="seo-institution-grouping-list" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-user-friends"></i></div>
+                                                             Keyword Blogs
+                                                        </a>
+                                                         <a href="seo-keyword-mapping" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-keyboard"></i></div>
+                                                            Keyword Mapping
+                                                        </a>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <%} %>
+                                        <%-- <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Utilities <div class="arrow-down"></div>
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="topnav-components">
+
+                                                <a href="inst-edit-gallery" class="dropdown-item">
+                                                    <div class="d-inline-block icons-sm mr-2"><i class="fa fa-image"></i></div> Edit Institution Gallery
+                                                </a>
+                                                
+
+                                            </div>
+
+                                        </li>--%>
+                                        <% if (Page.User.IsInRole("master"))
+                                            { %>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings
+                                                <div class="arrow-down"></div>
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="topnav-components">
+
+                                                <% if (Page.User.IsInRole("user"))
+                                                    { %>
+                                                <a href="admin-accounts" class="dropdown-item">
+                                                    <div class="d-inline-block icons-sm mr-2"><i class="fa fa-user"></i></div>
+                                                    Admin Accounts
+                                                </a>
+                                                <%} %>
+                                                <a href="notification-settings" class="dropdown-item">
+                                                    <div class="d-inline-block icons-sm mr-2"><i class="fa fa-info-circle"></i></div>
+                                                    Notification Settings
+                                                </a>
+                                                <a href="invoice-settings" class="dropdown-item">
+                                                    <div class="d-inline-block icons-sm mr-2"><i class="fa fa-newspaper"></i></div>
+                                                    Invoice Settings
+                                                </a>
+                                                <a href="indexing-settings" class="dropdown-item">
+                                                    <div class="d-inline-block icons-sm mr-2"><i class="fa fa-list"></i></div>
+                                                    Indexing Settings
+                                                </a>
+
+                                            </div>
+
+                                        </li>
+                                        <%} %>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+
+            </header>
+            <asp:ContentPlaceHolder ID="contentPlaceholder" runat="server">
+            </asp:ContentPlaceHolder>
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        <!-- Right Sidebar -->
+        <div class="right-bar">
+            <div data-simplebar class="h-100">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs nav-tabs-custom rightbar-nav-tab nav-justified" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link py-3 active" data-toggle="tab" href="#chat-tab" role="tab">
+                            <i class="mdi mdi-message-text font-size-22"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link py-3" data-toggle="tab" href="#tasks-tab" role="tab">
+                            <i class="mdi mdi-format-list-checkbox font-size-22"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link py-3" data-toggle="tab" href="#settings-tab" role="tab">
+                            <i class="mdi mdi-settings font-size-22"></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content text-muted">
+                    <div class="tab-pane active" id="chat-tab" role="tabpanel">
+                        <h6 class="p-3 mb-0 py-3 bg-light">Chat</h6>
+
+                    </div>
+
+                    <div class="tab-pane" id="tasks-tab" role="tabpanel">
+                        <h6 class="p-3 mb-0 py-3 bg-light">Working Tasks</h6>
+                    </div>
+                    <div class="tab-pane" id="settings-tab" role="tabpanel">
+                        <h6 class="px-4 py-3 bg-light">General Settings</h6>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end slimscroll-menu-->
+        </div>
+        <!-- /Right-bar -->
+    </form>
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
+
+    <!-- JAVASCRIPT -->
+
+    <script src="../assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="../assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="../assets/libs/node-waves/waves.min.js"></script>
+
+    <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
+    <!-- Required datatable js -->
+    <script src="../assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <!-- Buttons examples -->
+    <script src="../assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="../assets/libs/jszip/jszip.min.js"></script>
+    <script src="../assets/libs/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../assets/libs/pdfmake/build/vfs_fonts.js"></script>
+    <script src="../assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <!-- datepicker -->
+    <script src="../assets/libs/air-datepicker/js/i18n/datepicker.en.js"></script>
+    <script src="../assets/libs/air-datepicker/js/datepicker.min.js"></script>
+
+
+
+    <script src="../assets/libs/jquery-knob/jquery.knob.min.js"></script>
+
+
+    <!-- Responsive examples -->
+    <script src="../assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+    <!-- Datatable init js -->
+    <script src="../assets/js/pages/datatables.init.js"></script>
+    <script src="../assets/js/ajaxautocomplete.js?new=1"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/libs/toast/toast.js"></script>
+
+</body>
+</html>
+
+

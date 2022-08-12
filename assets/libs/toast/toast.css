@@ -1,0 +1,30 @@
+﻿
+.statusMain {
+    position: fixed;
+    z-index: 999999 !important;
+    top: 10%;
+    list-style: none;
+    width: 100%;
+    text-align: center;
+}
+.statusMsg {
+    padding: 7px 37px 0px 0px;
+    color: #ffffff;
+    height: 34px;
+    border-radius: 4px;
+    font-family: poppins;
+    display: inline-block;
+}
+
+    .statusMsg.success {
+        background: #137551;
+    }
+
+    .statusMsg.error {
+        background: #d43838;
+    }
+
+.statusMain ul {
+    list-style: none;
+    font-family: 'Nunito';
+}
