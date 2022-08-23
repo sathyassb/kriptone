@@ -22,8 +22,8 @@ public class Email
     public string subject { get; set; }
     public string userName { get; set; }
     public string machineName { get; set; }
-    public DateTime startTime { get; set; }
-    public DateTime endTime { get; set; }
+    public DateTime? startTime { get; set; }
+    public DateTime? endTime { get; set; }
     public string programName { get; set; }
     public string caption { get; set; }
     public string domainName { get; set; }

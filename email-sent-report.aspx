@@ -90,8 +90,8 @@
                                                         <td><%# ((Email)Container.DataItem).bCc %></td>
                                                         <td><%# ((Email)Container.DataItem).subject %></td>
                                                         <td><%# ((Email)Container.DataItem).body %></td>
-                                                        <td><%# ((Email)Container.DataItem).startTime.ToString("dd-MM-yyyy hh:mm tt") %></td>
-                                                        <td><%# ((Email)Container.DataItem).endTime.ToString("dd-MM-yyyy hh:mm tt") %></td>
+                                                        <td><%# ((DateTime)((Email)Container.DataItem).startTime).ToString("dd-MM-yyyy hh:mm tt") %></td>
+                                                        <td><%# ((DateTime)((Email)Container.DataItem).endTime).ToString("dd-MM-yyyy hh:mm tt") %></td>
                                                         
                                                     </tr>
                                                 </ItemTemplate>
