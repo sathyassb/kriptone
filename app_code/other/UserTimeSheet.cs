@@ -10,7 +10,7 @@ using System.Web.Script.Serialization;
 /// <summary>
 /// Summary description for Class1
 /// </summary>
-public class UserIdleTime
+public class UserTimeSheet
 {
     public Guid UserIdleTimeId { get; set; }
     public string UserName { get; set; }
@@ -23,17 +23,17 @@ public class UserIdleTime
     public DateTime IdleUpTo { get; set; }
     public string DomainName { get; set; }
     string url { get; set; }
-    public UserIdleTime()
+    public UserTimeSheet()
     {
-        url = "UserIdleTime";
+        url = "UserTimeSheet";
     }
 
 
-    public List<UserIdleTime> GetAll()
+    public List<UserTimeSheet> GetAll()
     {
         tcrestconnect rest = new tcrestconnect();
         string json = rest.tcWebRequest("GET", url, "byselector/option1/0/-/-", "");
-        List<UserIdleTime> userInfo = JsonConvert.DeserializeObject<List<UserIdleTime>>(json);
+        List<UserTimeSheet> userInfo = JsonConvert.DeserializeObject<List<UserTimeSheet>>(json);
         return userInfo;
     }
 

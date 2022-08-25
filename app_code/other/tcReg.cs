@@ -17,9 +17,9 @@ using Microsoft.Win32;
 using System.Data.SqlClient;
 public class tcReg
 {
-    public static string localurl = "http://103.19.250.169:9876/api/";
-    public static string testurl = "http://103.19.250.169:9876/api/";
-    public static string liveurl = "http://103.19.250.169:9876/api/";
+    public static string localurl = "https://localhost:7120/api/";
+    public static string testurl = "http://103.19.250.169:9875/api/";
+    public static string liveurl = "http://103.19.250.169:9875/api/";
     tcReg()
     {
 

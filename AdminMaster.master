@@ -133,8 +133,12 @@
                                                 <div class="row">
                                                     
                                                     <div class="col-lg-6">
+                                                          <a href="user-timesheet-report" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-clock"></i></div>
+                                                             User Time Sheet Report
+                                                        </a>
                                                         <a href="user-idle-time-report" class="dropdown-item">
-                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-heart"></i></div>
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-user-alt"></i></div>
                                                             User Idle Time
                                                         </a>
                                                           <a href="email-sent-report" class="dropdown-item">
