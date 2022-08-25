@@ -12,7 +12,7 @@ using System.Web.Script.Serialization;
 /// </summary>
 public class MachineList
 {
-    public string UserName { get; set; }
+    public string MachineName { get; set; }
     public string url { get; set; }
     public MachineList()
     {

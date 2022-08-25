@@ -23,7 +23,7 @@ public class UserList
     public List<UserTimeSheet> GetAll()
     {
         tcrestconnect rest = new tcrestconnect();
-        string json = rest.tcWebRequest("GET", url, "byselector/option1/0/-/-", "");
+        string json = rest.tcWebRequest("GET", url, "", "");
         List<UserTimeSheet> userInfo = JsonConvert.DeserializeObject<List<UserTimeSheet>>(json);
         return userInfo;
     }

@@ -18,11 +18,11 @@ public partial class _Default : System.Web.UI.Page
 
     private void idLoadUserReport()
     {
-        UserInfo _user = new UserInfo();
+        UserIdleTime _user = new UserIdleTime();
         var user = _user.GetAll();
         List<string> usernames=new List<string>();
         List<string> machinenames = new List<string>();
-         foreach (UserInfo u in user)
+         foreach (UserIdleTime u in user)
         {
             usernames.Add(u.UserName);
             machinenames.Add(u.MachineName);
@@ -38,7 +38,7 @@ public partial class _Default : System.Web.UI.Page
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
-        UserInfo _user = new UserInfo();
+        UserIdleTime _user = new UserIdleTime();
         var users = _user.GetAll();
         List<string> usernames = new List<string>();
         string filterUser = ddlUser.SelectedValue;
@@ -59,7 +59,7 @@ public partial class _Default : System.Web.UI.Page
             tclib.Toast("Please select from and to date", "error");
             return;
         }
-        List<UserInfo> filteredData = new List<UserInfo>();
+        List<UserIdleTime> filteredData = new List<UserIdleTime>();
         filteredData = users;
         if (ddlUser.SelectedValue != "-")
         {

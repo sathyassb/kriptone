@@ -15,7 +15,7 @@
                             <h4 class="page-title mb-1">User Idle Time Report</h4>
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="dashboard">Dashboard</a></li>
-                                <li class="breadcrumb-item active">User Idle Time Report</li>
+                                <li class="breadcrumb-item active">User Time Sheet Report</li>
                             </ol>
                         </div>
                         <div class="col-md-4">
@@ -60,11 +60,13 @@
                                         <thead>
                                             <tr>
                                                 <th>User Name</th>
+                                                <th>Date</th>
                                                 <th>Machine Name</th>
-                                                <th>Start Date</th>
-                                                <th>End Date</th>
-                                                <th>Active Minutes</th>
-                                                <th>Idle Minutes</th>
+                                                <th>Login Time</th>
+                                                <th>Logoff Time</th>
+                                                <th>Total Hours</th>
+                                                <th>Total Idle Hours</th>
+                                                <th>Total Productive Hours</th>
                                                 
                                                 
                                             </tr>
@@ -75,12 +77,12 @@
                                             <asp:Repeater runat="server" ID="rptUser">
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td><%# ((UserInfo)Container.DataItem).UserName %></td>
-                                                        <td><%# ((UserInfo)Container.DataItem).MachineName %></td>
-                                                        <td><%# ((UserInfo)Container.DataItem).IdleFrom.ToString("dd-MM-yyy hh:mm tt") %></td>
-                                                        <td><%# ((UserInfo)Container.DataItem).IdleUpTo.ToString("dd-MM-yyy hh:mm tt") %></td>
-                                                        <td><%# ((UserInfo)Container.DataItem).NoOfMinutesActive %></td>
-                                                        <td><%# ((UserInfo)Container.DataItem).NoOfMinutesIdle %></td>
+                                                        <td><%# ((UserTimeSheet)Container.DataItem).UserName %></td>
+                                                        <td><%# ((UserTimeSheet)Container.DataItem).MachineName %></td>
+                                                        <td><%# ((UserTimeSheet)Container.DataItem).IdleFrom.ToString("dd-MM-yyy hh:mm tt") %></td>
+                                                        <td><%# ((UserTimeSheet)Container.DataItem).IdleUpTo.ToString("dd-MM-yyy hh:mm tt") %></td>
+                                                        <td><%# ((UserTimeSheet)Container.DataItem).NoOfMinutesActive %></td>
+                                                        <td><%# ((UserTimeSheet)Container.DataItem).NoOfMinutesIdle %></td>
                                                         
                                                     </tr>
                                                 </ItemTemplate>

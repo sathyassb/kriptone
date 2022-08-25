@@ -75,12 +75,12 @@
                                             <asp:Repeater runat="server" ID="rptUser">
                                                 <ItemTemplate>
                                                     <tr>
-                                                        <td><%# ((UserInfo)Container.DataItem).UserName %></td>
-                                                        <td><%# ((UserInfo)Container.DataItem).MachineName %></td>
-                                                        <td><%# ((UserInfo)Container.DataItem).IdleFrom.ToString("dd-MM-yyy hh:mm tt") %></td>
-                                                        <td><%# ((UserInfo)Container.DataItem).IdleUpTo.ToString("dd-MM-yyy hh:mm tt") %></td>
-                                                        <td><%# ((UserInfo)Container.DataItem).NoOfMinutesActive %></td>
-                                                        <td><%# ((UserInfo)Container.DataItem).NoOfMinutesIdle %></td>
+                                                        <td><%# ((UserIdleTime)Container.DataItem).UserName %></td>
+                                                        <td><%# ((UserIdleTime)Container.DataItem).MachineName %></td>
+                                                        <td><%# ((UserIdleTime)Container.DataItem).IdleFrom.ToString("dd-MM-yyy hh:mm tt") %></td>
+                                                        <td><%# ((UserIdleTime)Container.DataItem).IdleUpTo.ToString("dd-MM-yyy hh:mm tt") %></td>
+                                                        <td><%# ((UserIdleTime)Container.DataItem).NoOfMinutesActive %></td>
+                                                        <td><%# ((UserIdleTime)Container.DataItem).NoOfMinutesIdle %></td>
                                                         
                                                     </tr>
                                                 </ItemTemplate>

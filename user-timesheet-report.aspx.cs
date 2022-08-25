@@ -12,69 +12,38 @@ public partial class _Default : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            idLoadUserList();
+            idLoadMachineList();
             idLoadUserReport();
+
         }
+    }
+
+    private void idLoadUserList()
+    {
+        UserList _userList = new UserList();
+        ddlUser.DataSource=_userList.GetAll();
+        ddlUser.DataTextField = "UserName";
+        ddlUser.DataValueField = "UserName";
+        ddlUser.DataBind();
+    }
+
+    private void idLoadMachineList()
+    {
+        MachineList _machineList = new MachineList();
+        ddlMachineName.DataSource = _machineList.GetAll();
+        ddlMachineName.DataTextField = "MachineName";
+        ddlMachineName.DataValueField = "MachineName";
+        ddlMachineName.DataBind();
     }
 
     private void idLoadUserReport()
     {
-        UserInfo _user = new UserInfo();
-        var user = _user.GetAll();
-        List<string> usernames=new List<string>();
-        List<string> machinenames = new List<string>();
-         foreach (UserInfo u in user)
-        {
-            usernames.Add(u.UserName);
-            machinenames.Add(u.MachineName);
-        }
-        ddlUser.DataSource=usernames.Distinct();
-        ddlUser.DataBind();
-        ddlUser.Items.Insert(0,new ListItem("All", "-"));
 
-        ddlMachineName.DataSource = machinenames.Distinct();
-        ddlMachineName.DataBind();
-        ddlMachineName.Items.Insert(0,new ListItem("All", "-"));
     }
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
-        UserInfo _user = new UserInfo();
-        var users = _user.GetAll();
-        List<string> usernames = new List<string>();
-        string filterUser = ddlUser.SelectedValue;
-        string filterMachine = ddlMachineName.SelectedValue;
-        DateTime filterFromDate = DateTime.Now;
-        DateTime filterToDate = DateTime.Now;
-        var isFromDateIsProper =
-             DateTime.TryParseExact(txtDateFrom.Text, "yyyy-MM-dd",
-        System.Globalization.CultureInfo.InvariantCulture,
-        System.Globalization.DateTimeStyles.None, out filterFromDate);
-
-        var isToDateIsProper = DateTime.TryParseExact(txtDateTo.Text, "yyyy-MM-dd",
-        System.Globalization.CultureInfo.InvariantCulture,
-        System.Globalization.DateTimeStyles.None, out filterToDate);
-
-        if(!(isFromDateIsProper&&isToDateIsProper))
-        {
-            tclib.Toast("Please select from and to date", "error");
-            return;
-        }
-        List<UserInfo> filteredData = new List<UserInfo>();
-        filteredData = users;
-        if (ddlUser.SelectedValue != "-")
-        {
-            filteredData = filteredData.Where(x => x.UserName == filterUser).ToList();
-        }
-        if (ddlMachineName.SelectedValue != "-")
-        {
-            filteredData = filteredData.Where(x => x.MachineName == filterMachine).ToList();
-        }
-
-        filteredData = filteredData.Where(x => x.IdleFrom > filterFromDate).ToList();
-        filteredData = filteredData.Where(x => x.IdleUpTo < filterToDate).ToList();
-
-        rptUser.DataSource = filteredData;
-        rptUser.DataBind();
 
     }
 }
