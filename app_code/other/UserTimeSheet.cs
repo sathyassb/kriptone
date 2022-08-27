@@ -12,16 +12,13 @@ using System.Web.Script.Serialization;
 /// </summary>
 public class UserTimeSheet
 {
-    public Guid UserIdleTimeId { get; set; }
     public string UserName { get; set; }
     public string MachineName { get; set; }
-    public long NoOfMinutesIdle { get; set; }
-    public long NoOfMinutesActive { get; set; }
-    public string UserDomainName { get; set; }
-    public string Location { get; set; }
-    public DateTime IdleFrom { get; set; }
-    public DateTime IdleUpTo { get; set; }
-    public string DomainName { get; set; }
+    public DateTime StartTime { get; set; }
+    public DateTime EndTime { get; set; }
+    public string LogoffTime { get; set; }
+    public int TotalMinutes { get; set; }
+    public int IdleMinutes { get; set; }
     string url { get; set; }
     public UserTimeSheet()
     {
@@ -29,10 +26,10 @@ public class UserTimeSheet
     }
 
 
-    public List<UserTimeSheet> GetAll()
+    public List<UserTimeSheet> GetAll(string userNames,string machineName,string fromDate,string ToDate)
     {
         tcrestconnect rest = new tcrestconnect();
-        string json = rest.tcWebRequest("GET", url, "byselector/option1/0/-/-", "");
+        string json = rest.tcWebRequest("GET", url, "byselector/time-sheet/"+userNames+"/"+machineName+"/"+fromDate+"/"+ToDate, "");
         List<UserTimeSheet> userInfo = JsonConvert.DeserializeObject<List<UserTimeSheet>>(json);
         return userInfo;
     }

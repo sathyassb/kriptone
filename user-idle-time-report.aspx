@@ -1,6 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="user-idle-time-report.aspx.cs" MasterPageFile="~/AdminMaster.master" Inherits="_Default" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="contentPlaceholder">
+    
+
     <!-- DataTables -->
     <!-- ============================================================== -->
     <!-- Start right Content here -->
@@ -35,22 +37,27 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row mb-5">
-                                        <div class="col-2">
-                                            <asp:DropDownList runat="server" ID="ddlUser" CssClass="form-control"></asp:DropDownList>
+                                         <div class="col-3 user-list">
+                                            <h5 class="header-title">User Name</h5>
+                                            <asp:ListBox runat="server" ID="lbxUser" SelectionMode="Multiple" CssClass="form-control" OnSelectedIndexChanged="ddlUser_SelectedIndexChanged"></asp:ListBox>
                                         </div>
+                                      
                                         <div class="col-2">
+                                            <h5 class="header-title">Machine Name</h5>
                                             <asp:DropDownList runat="server" ID="ddlMachineName" CssClass="form-control"></asp:DropDownList>
                                         </div>
 
                                          <div class="col-3">
+                                             <h5 class="header-title">From Date</h5>
                                             <asp:TextBox runat="server" ID="txtDateFrom" CssClass="form-control" TextMode="Date"></asp:TextBox>
                                         </div>
                                           
                                         <div class="col-3">
+                                            <h5 class="header-title">To Date</h5>
                                             <asp:TextBox runat="server" ID="txtDateTo" CssClass="form-control" TextMode="Date"></asp:TextBox>
                                         </div>
                                         
-                                        <div class="col-1">
+                                        <div class="col-1 mt-4">
                                             <asp:Button runat="server" ID="btnSubmit" Text="Search" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
                                         </div>
 
@@ -78,7 +85,7 @@
                                                         <td><%# ((UserIdleTime)Container.DataItem).UserName %></td>
                                                         <td><%# ((UserIdleTime)Container.DataItem).MachineName %></td>
                                                         <td><%# ((UserIdleTime)Container.DataItem).IdleFrom.ToString("dd-MM-yyy hh:mm tt") %></td>
-                                                        <td><%# ((UserIdleTime)Container.DataItem).IdleUpTo.ToString("dd-MM-yyy hh:mm tt") %></td>
+                                                        <td><%# ((UserIdleTime)Container.DataItem).IdleUpto.ToString("dd-MM-yyy hh:mm tt") %></td>
                                                         <td><%# ((UserIdleTime)Container.DataItem).NoOfMinutesActive %></td>
                                                         <td><%# ((UserIdleTime)Container.DataItem).NoOfMinutesIdle %></td>
                                                         
@@ -104,5 +111,14 @@
 
     </div>
     <!-- end main content-->
-   
+    <link rel="stylesheet" href="assets/css/bootstrap-multiselect.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+
+   <script type="text/javascript">
+    $(function () {
+        $('[id*=lbxUser]').multiselect({
+            includeSelectAllOption: true
+        });
+    });
+   </script>
 </asp:Content>

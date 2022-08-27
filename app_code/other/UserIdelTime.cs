@@ -20,7 +20,7 @@ public class UserIdleTime
     public string UserDomainName { get; set; }
     public string Location { get; set; }
     public DateTime IdleFrom { get; set; }
-    public DateTime IdleUpTo { get; set; }
+    public DateTime IdleUpto { get; set; }
     public string DomainName { get; set; }
     string url { get; set; }
     public UserIdleTime()
@@ -29,10 +29,10 @@ public class UserIdleTime
     }
 
 
-    public List<UserIdleTime> GetAll()
+    public List<UserIdleTime> GetAll(string userNames,string machineName,string fromDate,string ToDate)
     {
         tcrestconnect rest = new tcrestconnect();
-        string json = rest.tcWebRequest("GET", url, "byselector/option1/0/-/-", "");
+        string json = rest.tcWebRequest("GET", url, "byselector/report-1/"+userNames+"/"+machineName+"/"+fromDate+"/"+ToDate, "");
         List<UserIdleTime> userInfo = JsonConvert.DeserializeObject<List<UserIdleTime>>(json);
         return userInfo;
     }
