@@ -97,7 +97,7 @@ public partial class _Default : System.Web.UI.Page
 
         int idleMinutes = 0;
         users.ForEach(x => idleMinutes += x.IdleMinutes);
-        Title = "User:" + userNames + " From : "+txtDateFrom.Text+" To : "+txtDateTo.Text+"\n\rTotal Time: "+
+        Title = "User:" + userNames + "\n\r From : "+txtDateFrom.Text+"\n\r To : "+txtDateTo.Text+"\n\rTotal Productive Time: "+
             ((new  TimeSpan(0,totalMinutes-idleMinutes,0).Days*24+ new TimeSpan(0, totalMinutes-idleMinutes, 0).Hours)+"h:"+ new TimeSpan(0, totalMinutes-idleMinutes, 0).Minutes+"m");
 
     }
