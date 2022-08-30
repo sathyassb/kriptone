@@ -13,26 +13,26 @@ using System.Web.Script.Serialization;
 public class UserActivities
 {
     public string userActivityId { get; set; }
-    public string newWindowTitle { get; set; }
-    public string focusedElementType { get; set; }
-    public string focusChangedWindowTitle { get; set; }
-    public DateTime startTime { get; set; }
-    public string userName { get; set; }
-    public string machineName { get; set; }
+    public string NewWindowTitle { get; set; }
+    public string FocusedElementType { get; set; }
+    public string FocusChangedWindowTitle { get; set; }
+    public DateTime StartTime { get; set; }
+    public string UserName { get; set; }
+    public string MachineName { get; set; }
     public string domainName { get; set; }
     string url { get; set; }
     public UserActivities()
     {
         url = "UserActivities";
     }
-   
-    
-    public List<UserActivities> GetAll()
+
+
+    public List<UserActivities> GetAll(string userNames,string machineName,string fromDate,string ToDate)
     {
         tcrestconnect rest = new tcrestconnect();
-        string json = rest.tcWebRequest("GET", url, "", "");
-        List<UserActivities> emails = JsonConvert.DeserializeObject<List<UserActivities>>(json);
-        return emails;
+        string json = rest.tcWebRequest("GET", url, "byselector/report-1/"+userNames+"/"+machineName+"/"+fromDate+"/"+ToDate, "");
+        List<UserActivities> userInfo = JsonConvert.DeserializeObject<List<UserActivities>>(json);
+        return userInfo;
     }
 
 }

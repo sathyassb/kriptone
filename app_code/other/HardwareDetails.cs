@@ -38,7 +38,7 @@ public class HardwareDetails
     string url { get; set; }
     public HardwareDetails()
     {
-        url = "HardwareDetails";
+        url = "PrintReport";
     }
    
     
