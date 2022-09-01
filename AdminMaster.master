@@ -150,6 +150,7 @@
                                                             User Activities
 
                                                         </a>
+                                                       
                                                         <a href="print-report" class="dropdown-item">
                                                             <div class="d-inline-block icons-sm mr-2"><i class="fa  fa-print"></i></div>
                                                              Print Report
@@ -159,8 +160,30 @@
 
                                                     </div>
                                                     <div class="col-lg-6">
-                                                      
-                                                   
+                                                        <a href="file-shadows" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-file"></i></div>
+                                                            File Shadows
+
+                                                        </a>
+                                                    <a href="application-report" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-file"></i></div>
+                                                            Applications
+                                                        </a>
+                                                        <a href="authenticate-report" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-file"></i></div>
+                                                            Authenticate
+
+                                                        </a>
+                                                        <a href="clipboard-report" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-file"></i></div>
+                                                            Clip Board 
+
+                                                        </a>
+                                                        <a href="usbs-report" class="dropdown-item">
+                                                            <div class="d-inline-block icons-sm mr-2"><i class="fa fa-file"></i></div>
+                                                            Usb Report
+
+                                                        </a>
 
 
                                                     </div>

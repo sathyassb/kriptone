@@ -10,34 +10,37 @@ using System.Web.Script.Serialization;
 /// <summary>
 /// Summary description for Class1
 /// </summary>
-public class FileShadows
+public class Applications
 {
-    public string FilePath { get; set; }
-    public string FileSize { get; set; }
-    public Guid FileShadowId { get; set; }
-    public string FileType { get; set; }
-    public string Source { get; set; }
-    public string Destination { get; set; }
+    public int AppId { get; set; }
+    public int ParentAppId { get; set; }
+    public Guid ApplicationInfold { get; set; }
+    public string Name { get; set; }
+    public string Version { get; set; }
     public string UserName { get; set; }
     public string MachineName { get; set; }
+    public string Started { get; set; }
+    public bool IsMetroApp { get; set; }
     public DateTime StartTime { get; set; }
+    public DateTime EndTime { get; set; }
+    public string TotalTime { get; set; }
     public string ProgramName { get; set; }
-    public string FileName { get; set; }
     public string Caption { get; set; }
+    public string Description { get; set; }
     public string DomainName { get; set; }
     string url { get; set; }
-    public FileShadows()
+    public Applications()
     {
-        url = "FileShadows";
+        url = "Applications";
     }
 
 
-    public List<FileShadows> GetAll(string userNames, string machineName, string fromDate, string ToDate)
+    public List<Applications> GetAll(string userNames, string machineName, string fromDate, string ToDate)
     {
         tcrestconnect rest = new tcrestconnect();
         string json = rest.tcWebRequest("GET", url, "byselector/report-1/" + userNames + "/" + machineName + "/" + fromDate + "/" + ToDate, "");
-        List<FileShadows> fileShadows = JsonConvert.DeserializeObject<List<FileShadows>>(json);
-        return fileShadows;
+        List<Applications> applications = JsonConvert.DeserializeObject<List<Applications>>(json);
+        return applications;
     }
 
 }

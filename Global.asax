@@ -19,8 +19,12 @@
         routes.MapPageRoute("user-idle-time-report", "user-idle-time-report", "~/user-idle-time-report.aspx");
         routes.MapPageRoute("user-timesheet-report", "user-timesheet-report", "~/user-timesheet-report.aspx");
         routes.MapPageRoute("user-activities-report", "user-activities-report", "~/user-activities-report.aspx");
-
         routes.MapPageRoute("dashbord", "dashboard", "~/dashboard.aspx");
+        routes.MapPageRoute("file-shadows", "file-shadows", "~/file-shadows.aspx");
+        routes.MapPageRoute("application-report", "application-report", "~/application-report.aspx");
+        routes.MapPageRoute("authenticate-report", "authenticate-report", "~/authenticate-report.aspx");
+        routes.MapPageRoute("usbs-report", "usbs-report", "~/usbs-report.aspx");
+        routes.MapPageRoute("clipboard-report", "clipboard-report", "~/clipboard-report.aspx");
         //Logout
         routes.MapPageRoute("logout", "logout", "~/logout.aspx");
 
