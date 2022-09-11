@@ -47,16 +47,22 @@
                                             <asp:DropDownList runat="server" ID="ddlMachineName" CssClass="form-control"></asp:DropDownList>
                                         </div>
 
-                                         <div class="col-3">
+                                         <div class="col-2">
                                              <h5 class="header-title">From Date</h5>
                                             <asp:TextBox runat="server" ID="txtDateFrom" CssClass="form-control" TextMode="Date"></asp:TextBox>
                                         </div>
                                           
-                                        <div class="col-3">
+                                        <div class="col-2">
                                             <h5 class="header-title">To Date</h5>
                                             <asp:TextBox runat="server" ID="txtDateTo" CssClass="form-control" TextMode="Date"></asp:TextBox>
                                         </div>
-                                        
+                                          <div class="col-2">
+                                            <h5 class="header-title">Option</h5>
+                                            <asp:DropDownList runat="server" ID="ddlOption" CssClass="form-control">
+                                                <asp:ListItem Text="Everything" Value="full"></asp:ListItem>
+                                                <asp:ListItem Text="Consolidated" Value="total"></asp:ListItem>
+                                            </asp:DropDownList>
+                                        </div>
                                         <div class="col-1 mt-4">
                                             <asp:Button runat="server" ID="btnSubmit" Text="Search" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
                                         </div>

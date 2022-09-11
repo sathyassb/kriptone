@@ -84,21 +84,21 @@ public partial class _Default : System.Web.UI.Page
             tclib.Toast("Please select a valid from and to date", "error");
             return;
         }
-        if (filterToDate<filterFromDate)
+        if (filterToDate < filterFromDate)
         {
             tclib.Toast("Please select to date greater than from date", "error");
             return;
         }
-        var users = _timesheet.GetAll(userNames, ddlMachineName.SelectedValue, filterFromDate.ToString("yyyy-MM-dd"), filterToDate.ToString("yyyy-MM-dd"));
+        var users = _timesheet.GetAll(userNames, ddlMachineName.SelectedValue, ddlOption.SelectedValue.ToString(), filterFromDate.ToString("yyyy-MM-dd"), filterToDate.ToString("yyyy-MM-dd"));
         rptUser.DataSource = users;
         rptUser.DataBind();
         int totalMinutes = 0;
-        users.ForEach(x =>totalMinutes+=x.TotalMinutes);
+        users.ForEach(x => totalMinutes += x.TotalMinutes);
 
         int idleMinutes = 0;
         users.ForEach(x => idleMinutes += x.IdleMinutes);
-        Title = "User:" + userNames + "\n\r From : "+txtDateFrom.Text+" To : "+txtDateTo.Text+"\n\rTotal Productive Time: "+
-            ((new  TimeSpan(0,totalMinutes-idleMinutes,0).Days*24+ new TimeSpan(0, totalMinutes-idleMinutes, 0).Hours)+"h:"+ new TimeSpan(0, totalMinutes-idleMinutes, 0).Minutes+"m");
+        Title = "User:" + userNames + "\n\r From : " + txtDateFrom.Text + " To : " + txtDateTo.Text + "\n\rTotal Productive Time: " +
+            ((new TimeSpan(0, totalMinutes - idleMinutes, 0).Days * 24 + new TimeSpan(0, totalMinutes - idleMinutes, 0).Hours) + "h:" + new TimeSpan(0, totalMinutes - idleMinutes, 0).Minutes + "m");
 
     }
 

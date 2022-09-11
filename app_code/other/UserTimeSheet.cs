@@ -26,10 +26,10 @@ public class UserTimeSheet
     }
 
 
-    public List<UserTimeSheet> GetAll(string userNames,string machineName,string fromDate,string ToDate)
+    public List<UserTimeSheet> GetAll(string userNames,string machineName,string type,string fromDate,string ToDate)
     {
         tcrestconnect rest = new tcrestconnect();
-        string json = rest.tcWebRequest("GET", url, "byselector/time-sheet/"+userNames+"/"+machineName+"/"+fromDate+"/"+ToDate, "");
+        string json = rest.tcWebRequest("GET", url, "byselector/time-sheet/"+userNames+"/"+machineName+"/"+type+"/"+fromDate+"/"+ToDate, "");
         List<UserTimeSheet> userInfo = JsonConvert.DeserializeObject<List<UserTimeSheet>>(json);
         return userInfo;
     }
